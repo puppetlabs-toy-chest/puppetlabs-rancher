@@ -63,7 +63,7 @@ describe 'rancher' do
 
         context "with a missing registration url" do
           it do
-            expect { is_expected.to contain_docker_exec('bootstrap rancher agent') }.to raise_error(Puppet::Error, /expects a value for parameter/)
+            expect { is_expected.to contain_docker_exec('bootstrap rancher agent') }.to raise_error(Puppet::Error)
           end
         end
 
