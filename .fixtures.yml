@@ -1,0 +1,6 @@
+fixtures:
+  forge_modules:
+    stdlib: 'puppetlabs-stdlib'
+    docker: 'garethr-docker'
+  symlinks:
+    rancher: "#{source_dir}"

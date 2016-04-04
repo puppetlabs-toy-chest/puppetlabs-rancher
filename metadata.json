@@ -1,0 +1,34 @@
+{
+  "name": "puppetlabs-rancher",
+  "version": "0.1.0",
+  "author": "puppetlabs",
+  "summary": "",
+  "license": "Apache-2.0",
+  "source": "",
+  "project_page": "",
+  "issues_url": "",
+  "dependencies": [
+    {
+      "name": "puppetlabs-stdlib",
+      "version_requirement": ">= 1.0.0"
+    },
+    {
+      "name": "garethr-docker",
+      "version_requirement": ">= 5.0.0"
+    }
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "7"
+      ]
+    }
+  ]
+}
