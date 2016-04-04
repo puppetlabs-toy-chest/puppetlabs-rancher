@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>
+  File: README
+  
+    &mdash; Documentation by YARD 0.8.7.6
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!file.README.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="puppet_manifest_list_link"
+        href="puppet_manifest_list.html">
+      Puppet Manifest List
+    </a>
+  
+    <a class="full_list_link" id="puppet_plugin_list_link"
+        href="puppet_plugin_list.html">
+      Puppet Plugin List
+    </a>
+  
+    <a class="full_list_link" id="puppet_type_list_link"
+        href="puppet_type_list.html">
+      Puppet Type List
+    </a>
+  
+    <a class="full_list_link" id="puppet_provider_list_link"
+        href="puppet_provider_list.html">
+      Puppet Provider List
+    </a>
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><div id='filecontents'>
+<h4 id="label-Table+of+Contents">Table of Contents</h4>
+<ol><li>
+<p><a href="#overview">Overview</a></p>
+</li><li>
+<p><a href="#module-description">Module Description - What the module does and
+why it is useful</a></p>
+</li><li>
+<p><a href="#setup">Setup - The basics of getting started with rancher</a></p>
+</li><li>
+<p><a href="#usage">Usage - Configuration options and additional
+functionality</a></p>
+</li><li>
+<p><a href="#reference">Reference - An under-the-hood peek at what the module
+is doing and how</a></p>
+</li></ol>
+
+<h2 id="label-Overview">Overview</h2>
+
+<p>A module to install the <a href="http://rancher.com/">Rancher</a> server
+and accompanying agents on supported operating systems.</p>
+
+<h2 id="label-Module+Description">Module Description</h2>
+
+<p>Rancher is a complete platform for running containers. Rancher supports
+both Kubernetes and Docker Swarm, making it simple to run any containerized
+application on any infrastructure. With this Puppet module you can easily
+setup Rancher on your own Puppet managed hosts.</p>
+
+<h2 id="label-Setup">Setup</h2>
+
+<p>The module requires Docker to be running on the hosts. For this you can use
+the Puppet <a
+href="https://forge.puppetlabs.com/puppetlabs/docker_platform">Docker
+module</a> or any other means. If using the docker module this is as simple
+as:</p>
+
+<pre class="code ruby"><code class="ruby">class { &#39;docker&#39;: }
+</code></pre>
+
+<h2 id="label-Usage">Usage</h2>
+
+<p>First you are likely to want to install a new rancher server. This is as
+simple as:</p>
+
+<pre class="code ruby"><code class="ruby">class { &#39;rancher:server&#39;: }
+</code></pre>
+
+<p>It is also possible to specify a custom port for the server to run on:</p>
+
+<pre class="code ruby"><code class="ruby">class { &#39;rancher:server&#39;:
+  port =&gt; 9090,
+}
+</code></pre>
+
+<p>Once the server is up and running and you can retrieve a registration token
+(from the web interface or from the API) you can bootstrap Rancher agents.</p>
+
+<pre class="code ruby"><code class="ruby">class { &#39;rancher&#39;:
+  registration_url =&gt; &#39;http://127.0.0.1:8080/v1/scripts/DB121CFBA836F9493653:1434085200000:2ZOwUMd6fIzz44efikGhBP1veo&#39;,
+}
+</code></pre>
+
+<p>The class will use the ipaddress from <code>facter ipaddress</code> to
+register the agent, if this is not correct you can override it like so:</p>
+
+<pre class="code ruby"><code class="ruby">class { &#39;rancher&#39;:
+  registration_url =&gt; &#39;http://127.0.0.1:8080/v1/scripts/DB121CFBA836F9493653:1434085200000:2ZOwUMd6fIzz44efikGhBP1veo&#39;,
+  agent_address    =&gt; $::ipaddress_eth1,
+}
+</code></pre>
+
+<h2 id="label-Reference">Reference</h2>
+
+<p><a href="http://puppetlabs.github.io/puppetlabs-rancher/">Full API
+reference documentation</a> is available as generated by <a
+href="https://github.com/puppetlabs/puppetlabs-strings">Puppet Strings</a>.</p>
+</div></div>
+
+    <div id="footer">
+  Generated on Mon Apr  4 15:44:51 2016 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.6 (ruby-2.1.5).
+</div>
+
+  </body>
+</html>
