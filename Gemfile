@@ -26,6 +26,7 @@ group :development do
   gem "puppet-blacksmith"
   gem "guard-rake"
   gem "pry-byebug"
+  gem "yard"
 end
 
 group :system_tests do
