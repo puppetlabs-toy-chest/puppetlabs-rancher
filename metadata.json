@@ -2,11 +2,11 @@
   "name": "puppetlabs-rancher",
   "version": "0.1.0",
   "author": "puppetlabs",
-  "summary": "",
+  "summary": "Installs Rancher Server and Agents",
   "license": "Apache-2.0",
-  "source": "",
-  "project_page": "",
-  "issues_url": "",
+  "source": "git://github.com/puppetlabs/puppetlabs-rancher.git",
+  "project_page": "https://github.com/puppetlabs/puppetlabs-rancher",
+  "issues_url": "https://github.com/puppetlabs/puppetlabs-rancher/issues",
   "dependencies": [
     {
       "name": "puppetlabs-stdlib",
@@ -17,17 +17,24 @@
       "version_requirement": ">= 5.0.0"
     }
   ],
+  "data_provider": null,
   "operatingsystem_support": [
     {
-      "operatingsystem": "Debian",
+      "operatingsystem": "RedHat",
       "operatingsystemrelease": [
         "7"
       ]
     },
     {
-      "operatingsystem": "RedHat",
+      "operatingsystem": "CentOS",
       "operatingsystemrelease": [
         "7"
+      ]
+    },
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "14.04"
       ]
     }
   ]
