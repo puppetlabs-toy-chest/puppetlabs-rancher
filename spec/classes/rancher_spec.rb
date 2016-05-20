@@ -49,6 +49,20 @@ describe 'rancher' do
           end
         end
 
+        context "with a custom image tag" do
+          let(:params) do
+            {
+              registration_url: 'http://127.0.0.1:8080/v1/scripts/DB121CFBA836F9493653:1434085200000:2ZOwUMd6fIzz44efikGhBP1veo',
+              image_tag: 'v1.0.1'
+            }
+          end
+          it do
+            is_expected.to compile.with_all_deps
+            is_expected.to contain_exec('bootstrap rancher agent')
+              .with_command(/rancher\/agent:v1.0.1/)
+          end
+        end
+
         context "with an invalid socket value" do
           let(:params) do
             {
