@@ -7,4 +7,5 @@ class rancher::params {
   $server_port = 8080
   $docker_socket = '/var/run/docker.sock'
   $agent_address = $::ipaddress
+  $image_tag = 'latest'
 }

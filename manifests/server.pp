@@ -16,12 +16,15 @@
 class rancher::server(
   $ensure = 'present',
   $port = $::rancher::params::server_port,
+  $image_tag = $::rancher::params::image_tag,
 ) inherits ::rancher::params {
 
   validate_re($ensure, '^(present|absent)', 'ensure should be present or absent')
   validate_integer($port)
 
-  docker::image { 'rancher/server': } ->
+  docker::image { 'rancher/server':
+    image_tag => $image_tag,
+  } ->
   docker::run { 'rancher-server':
     ensure => $ensure,
     image  => 'rancher/server',

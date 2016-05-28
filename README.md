@@ -28,13 +28,13 @@ First you are likely to want to install a new rancher server. This is as
 simple as:
 
 ```puppet
-class { 'rancher:server': }
+class { 'rancher::server': }
 ```
 
 It is also possible to specify a custom port for the server to run on:
 
 ```puppet
-class { 'rancher:server':
+class { 'rancher::server':
   port => 9090,
 }
 ```

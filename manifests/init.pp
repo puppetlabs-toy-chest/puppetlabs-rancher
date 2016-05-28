@@ -23,17 +23,19 @@ class rancher (
   $registration_url,
   $agent_address = $::rancher::params::agent_address,
   $docker_socket = $::rancher::params::docker_socket,
+  $image_tag = $::rancher::params::image_tag,
 ) inherits ::rancher::params {
 
   validate_absolute_path($docker_socket)
   validate_string($registration_url)
+  validate_string($image_tag)
   validate_ip_address($agent_address)
 
   docker::image { 'rancher/agent': } ->
   exec { 'bootstrap rancher agent':
     path      => ['/usr/local/bin', '/usr/bin', '/bin'],
     logoutput => true,
-    command   => "docker run --privileged -v ${docker_socket}:/var/run/docker.sock -v /var/lib/rancher:/var/lib/rancher -e 'CATTLE_AGENT_IP=${agent_address}' rancher/agent ${registration_url}",
+    command   => "docker run --privileged -v ${docker_socket}:/var/run/docker.sock -v /var/lib/rancher:/var/lib/rancher -e 'CATTLE_AGENT_IP=${agent_address}' rancher/agent:${image_tag} ${registration_url}",
     unless    => 'docker inspect rancher-agent',
   }
 }

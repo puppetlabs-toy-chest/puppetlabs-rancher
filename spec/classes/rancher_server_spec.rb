@@ -13,6 +13,7 @@ describe 'rancher::server' do
             is_expected.to compile.with_all_deps
             is_expected.to contain_class('rancher::params')
             is_expected.to contain_docker__image('rancher/server')
+              .with_image_tag('latest')
             is_expected.to contain_docker__run('rancher-server')
               .with_ensure('present')
               .with_image('rancher/server')
@@ -35,6 +36,15 @@ describe 'rancher::server' do
             is_expected.to compile.with_all_deps
             is_expected.to contain_docker__run('rancher-server')
               .with_ensure('absent')
+          end
+        end
+
+        context "with a custom image tag" do
+          let(:params) { { image_tag: 'v1.0.1' } }
+          it do
+            is_expected.to compile.with_all_deps
+            is_expected.to contain_docker__image('rancher/server')
+              .with_image_tag('v1.0.1')
           end
         end
 
