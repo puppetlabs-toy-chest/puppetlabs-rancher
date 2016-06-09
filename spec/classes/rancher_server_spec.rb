@@ -75,6 +75,21 @@ describe 'rancher::server' do
           end
         end
 
+        context "create an external database" do
+          let(:params) { { db_password: 'test' } }
+          it do
+            is_expected.to compile.with_all_deps
+            is_expected.to contain_docker__run('rancher-db')
+              .with_env([
+                'MYSQL_ROOT_PASSWORD=test',
+                'MYSQL_USER=rancher',
+                'MYSQL_PASSWORD=test',
+                'MYSQL_DATABASE=rancher',
+              ])
+              .with_volumes(['/var/lib/rancher-db:/var/lib/mysql'])
+              .with_image('mariadb')
+          end
+        end
         context "with an external database" do
           let(:params) { { db_password: 'test' } }
           it do
@@ -109,7 +124,6 @@ describe 'rancher::server' do
               .with_dns_search(['domain.local'])
           end
         end
-
       end
     end
   end

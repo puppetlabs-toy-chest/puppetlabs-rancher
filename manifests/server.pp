@@ -3,6 +3,9 @@
 #
 # Run the Rancher Server container.
 #
+# If all db_* parameters are provided, an external database container will be
+# created for the Rancher server.
+#
 # Parameters
 # ----------
 #
@@ -69,7 +72,7 @@ class rancher::server(
       ($db_password != undef) and
       ($db_container != undef) {
     validate_string($db_container)
-    validate_string($db_host)
+    validate_string($db_name)
     validate_string($db_user)
     validate_string($db_password)
     validate_integer($db_port)
@@ -82,6 +85,20 @@ class rancher::server(
     ]
     $links = [ $db_container ]
     $depends = [ $db_container ]
+    docker::image {'mariadb':
+      image_tag => 'latest',
+    } ->
+    docker::run { $db_container:
+      image   => 'mariadb',
+      env     => [
+        "MYSQL_ROOT_PASSWORD=${db_password}",
+        "MYSQL_USER=${db_user}",
+        "MYSQL_PASSWORD=${db_password}",
+        "MYSQL_DATABASE=${db_name}",
+      ],
+      volumes => [ "/var/lib/${db_container}:/var/lib/mysql" ],
+      notify  => Docker::Run[$container_name],
+    }
   } else {
     $env = []
     $links = []
