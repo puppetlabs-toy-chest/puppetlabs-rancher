@@ -112,22 +112,9 @@
 </dl>
 <div class="clear"></div>
 
-<h2>Overview</h2><div class="docstring">
+<div class="docstring">
   <div class="discussion">
-    <p>
-<h1 id="label-Class%3A+rancher%3A%3Aserver">Class: rancher::server</h1>
-
-<p>Run the Rancher Server container.</p>
-
-<h2 id="label-Parameters">Parameters</h2>
-<ul><li>
-<p><code>ensure</code>  Whether to install or remove the server. Defaults to
-present.  Alternatively specify absent.</p>
-</li><li>
-<p><code>port</code>  The port to bind the Rancher server to. Defaults to
-8080.</p>
-</li></ul>
-</p>
+    <p></p>
   </div>
 </div>
 <div class="tags">
@@ -138,13 +125,13 @@ present.  Alternatively specify absent.</p>
 <h2>Parameter Summary</h2>
 <div class="tags">
   <ul class="param">
-    <li><span class="name">ensure </span><span class="type">(<tt>Any</tt>)</span><tt> => 'present'</tt></li><li><span class="name">port </span><span class="type">(<tt>Any</tt>)</span><tt> => $::rancher::params::server_port</tt></li>
+    <li><span class="name">ensure </span><span class="type">(<tt>Any</tt>)</span><tt> => 'present'</tt></li><li><span class="name">port </span><span class="type">(<tt>Any</tt>)</span><tt> => $::rancher::params::server_port</tt></li><li><span class="name">image_tag </span><span class="type">(<tt>Any</tt>)</span><tt> => $::rancher::params::image_tag</tt></li><li><span class="name">container_name </span><span class="type">(<tt>Any</tt>)</span><tt> => $::rancher::params::container_name</tt></li><li><span class="name">db_port </span><span class="type">(<tt>Any</tt>)</span><tt> => $::rancher::params::db_port</tt></li><li><span class="name">db_name </span><span class="type">(<tt>Any</tt>)</span><tt> => $::rancher::params::db_name</tt></li><li><span class="name">db_user </span><span class="type">(<tt>Any</tt>)</span><tt> => $::rancher::params::db_user</tt></li><li><span class="name">db_password </span><span class="type">(<tt>Any</tt>)</span><tt> => $::rancher::params::db_password</tt></li><li><span class="name">db_container </span><span class="type">(<tt>Any</tt>)</span><tt> => $::rancher::params::db_container</tt></li><li><span class="name">dns </span><span class="type">(<tt>Any</tt>)</span><tt> => $::rancher::params::dns</tt></li><li><span class="name">dns_search </span><span class="type">(<tt>Any</tt>)</span><tt> => $::rancher::params::dns_search</tt></li>
   </ul>
 </div>
 </div>
 
     <div id="footer">
-  Generated on Mon Apr  4 15:44:51 2016 by
+  Generated on Fri Jun 10 09:34:11 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-2.1.5).
 </div>
