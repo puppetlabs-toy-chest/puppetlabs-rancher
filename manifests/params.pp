@@ -8,4 +8,12 @@ class rancher::params {
   $docker_socket = '/var/run/docker.sock'
   $agent_address = $::ipaddress
   $image_tag = 'latest'
+  $container_name = 'rancher-server'
+  $db_port = 3306
+  $db_name = 'rancher'
+  $db_user = 'rancher'
+  $db_password = undef
+  $db_container = 'rancher-db'
+  $dns = []
+  $dns_search = []
 }
