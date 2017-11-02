@@ -36,6 +36,6 @@ class rancher (
     path      => ['/usr/local/bin', '/usr/bin', '/bin'],
     logoutput => true,
     command   => "docker run --privileged -v ${docker_socket}:/var/run/docker.sock -v /var/lib/rancher:/var/lib/rancher -e 'CATTLE_AGENT_IP=${agent_address}' rancher/agent:${image_tag} ${registration_url}",
-    unless    => 'docker inspect rancher-agent',
+    unless    => 'docker inspect rancher/agent',
   }
 }
