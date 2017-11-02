@@ -110,7 +110,7 @@ class rancher::server(
   } ->
   docker::run { $container_name:
     ensure     => $ensure,
-    image      => 'rancher/server:${image_tag}',
+    image      => "rancher/server:${image_tag}",
     ports      => ["${port}:8080"],
     env        => $env,
     links      => $links,
