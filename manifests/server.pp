@@ -23,7 +23,7 @@
 #   Name of the new Rancher container. Defaults to rancher-server
 #
 # * `db_port`
-#   Database port for using an external database container. Defaults to 3306    
+#   Database port for using an external database container. Defaults to 3306
 #
 # * `db_name`
 #   Name of the database. Defaults to rancher
@@ -65,7 +65,7 @@ class rancher::server(
   validate_string($container_name)
   validate_array($dns)
   validate_array($dns_search)
-  
+
   if  ($db_port != undef) and
       ($db_name != undef) and
       ($db_user != undef) and
@@ -110,7 +110,7 @@ class rancher::server(
   } ->
   docker::run { $container_name:
     ensure     => $ensure,
-    image      => 'rancher/server',
+    image      => "rancher/server:${image_tag}",
     ports      => ["${port}:8080"],
     env        => $env,
     links      => $links,
